@@ -1,4 +1,4 @@
-# J.A.R.V.I.S. Personal Assistant — Prototype 0.1
+# J.A.R.V.I.S. Personal Assistant — Prototype 0.1.1
 
 A static, installable web prototype for a personal task manager with a JARVIS-inspired dark/cyan interface.
 
