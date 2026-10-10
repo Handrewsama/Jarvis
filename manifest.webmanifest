@@ -1,0 +1,11 @@
+{
+  "name": "J.A.R.V.I.S. Personal Assistant",
+  "short_name": "JARVIS",
+  "description": "Personal task manager and assistant prototype",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#07111f",
+  "icons": []
+}
