@@ -37,3 +37,11 @@ La conversa de JARVIS mostra les instruccions i respostes en format de xat. El c
 La conversa accepta ordres per consultar el resum del dia, llistar pendents/completades, completar o eliminar tasques i reprogramar tasques per dies de la setmana. Desa el context de l'última tasca al navegador. Consulta `README-0.3.0-TESTS.txt` abans de validar-ho.
 
 `GET /api/integrations/status` informa si s'han definit secrets de configuració per a Google i Meta. És només una comprovació de preparació: no autentica cap compte ni connecta serveis. Gmail/Google Calendar requereixen OAuth i callbacks reals; WhatsApp Business requereix configuració oficial de Meta i webhook.
+
+
+## v0.3.1 — interpretació i edició de tasques
+
+- Normalitza accents, articles i preposicions per reconèixer variants com «trucar a en Jordi» i «trucar al Jordi».
+- Fa una cerca aproximada del títol de tasca en lloc d'exigir una coincidència literal.
+- Detecta les ordres de modificació abans d'intentar crear tasques noves. Si no troba la tasca, ho explica i no crea cap duplicat.
+- Després de modificar una data, confirma explícitament que s'ha actualitzat la tasca existent.

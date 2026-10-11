@@ -1,0 +1,8 @@
+JARVIS 0.3.1 — interpretació de tasques i edició segura
+
+- Normalització lingüística de títols: accents, articles i preposicions.
+- Cerca aproximada de tasques per reconèixer variants de redacció.
+- Les ordres de modificació es processen abans de la creació.
+- Si no s'identifica la tasca o la data, JARVIS pregunta/explica el problema en lloc de crear una tasca nova.
+- Confirmació de canvis a la tasca existent.
+- Cache busting: build 20261011-05.
