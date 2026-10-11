@@ -1,0 +1,15 @@
+JARVIS 0.2.0 — CANVIS
+
+- Tasques recurrents diàries, setmanals i mensuals.
+- Quan es completa una tasca recurrent amb data límit, es crea la següent ocurrència.
+- Notificacions de tasques vençudes/per avui mentre l'aplicació està oberta i visible i el navegador ha concedit permís.
+- Exportació de tasques en JSON i importació de còpies JSON.
+- Exportació de tasques pendents amb data com a calendari .ics.
+- Sincronització D1 ampliada per desar la recurrència.
+- Nova versió del service worker per invalidar la memòria cau antiga.
+
+LIMITACIONS
+- Gmail, Google Calendar i WhatsApp continuen sense connexió real.
+- Les notificacions no són un sistema push fiable en segon pla a iOS.
+- Cal executar migration-v020.sql una sola vegada a D1 abans de desplegar el nou backend.
+- La sincronització actual substitueix el conjunt de tasques del compte D1; no és multiusuari.

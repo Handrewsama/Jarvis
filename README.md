@@ -1,39 +1,28 @@
-# J.A.R.V.I.S. Personal Assistant — Prototype 0.1.1
+# J.A.R.V.I.S. Personal Assistant — 0.2.0
 
-A static, installable web prototype for a personal task manager with a JARVIS-inspired dark/cyan interface.
+Responsive installable PWA with a dark/cyan interface, Catalan/Spanish/English UI, task management, local activity, speech-command prototype, Cloudflare Pages Functions API and D1 sync.
 
-## Included
-- Responsive dashboard for iPhone and desktop.
-- Create, edit, complete and delete tasks; priorities, due dates, search and filters.
-- Local activity log and JSON export.
-- Browser-language detection plus Catalan, Spanish and English interface options.
-- Experimental browser speech recognition and a “Jarvis” wake-word mode.
-- PWA manifest and service worker for basic offline caching.
-- Gmail, Google Calendar and WhatsApp Business cards marked as not connected.
+## Included in this build
+- Task creation, editing, completion, deletion, search and priority filters.
+- Daily, weekly and monthly recurrence (a new task is generated when a recurring task is completed; it needs a due date).
+- Browser notifications for due/overdue tasks while the app is open and visible, if permission is granted.
+- JSON backup export/import and calendar export as `.ics`.
+- Token-based API connection; token remains in sessionStorage, not in repository files.
+- Cloud sync to D1 through `functions/api/tasks.js`.
+- PWA manifest/service worker and responsive iPhone layout.
+
+## Cloudflare deployment
+1. Deploy this folder as a Cloudflare Pages project.
+2. Create D1 database `jarvis-db` and bind it to the Pages project with binding name `DB`.
+3. Add `JARVIS_API_TOKEN` as a **Secret** in Production. Use the same long random value in JARVIS Settings. Never commit it to GitHub.
+4. If you already applied the previous migration, run `migration-v020.sql` once to add the `repeat` column. Do not rerun it after it succeeds. If the original schema is not installed, apply the original migration first, then this one.
+5. Redeploy after changing production secrets.
 
 ## Important limitations
-- Tasks are stored in this browser's localStorage. There is no cross-device sync, account system, backend, AI API, email access or WhatsApp connection yet.
-- Speech recognition depends on browser support and microphone permission. It generally requires the page to stay open; reliable always-on/background wake-word detection is not provided. iOS Safari may not support continuous recognition.
-- The command parser is a simple local demo, not an LLM. Review parsed tasks.
-- PWA service workers require HTTPS or localhost. Google Fonts are optional and need internet access.
-- No API keys, OAuth credentials, Meta tokens or secrets are included.
+- Gmail, Google Calendar and WhatsApp Business are not connected. Real integrations require OAuth/Meta setup, server-side secrets, consent and endpoint code; this build does not claim they work.
+- Notification checks are browser-side and work only while JARVIS is open/active. iOS may limit background notifications. For dependable scheduled push reminders, a server scheduler and push subscription infrastructure are still required.
+- Voice recognition is browser-dependent and does not provide reliable always-on listening or background execution on iOS.
+- The current sync endpoint replaces the task list in D1 with the submitted list. Use one trusted JARVIS workspace/token; multi-user separation is not implemented.
 
-## Run locally
-Use a local HTTP server (service workers do not work from `file://`). From this folder, run:
-
-```bash
-python -m http.server 8000
-```
-
-Then open `http://localhost:8000` in a browser.
-
-## Deploy on a free static host
-Upload this folder to a static host such as Cloudflare Pages or GitHub Pages and use HTTPS. On iPhone, open the deployed URL in Safari, tap Share, then “Add to Home Screen”.
-
-## Next steps
-1. Add secure backend and authentication.
-2. Add a database for cross-device sync.
-3. Implement Google OAuth and Gmail/Calendar APIs server-side.
-4. Add a human approval queue for external actions.
-5. Integrate WhatsApp Business Cloud API after checking account/number eligibility.
-6. Add a real AI model endpoint and secure scheduled jobs.
+## Local testing
+Serve over HTTPS or localhost. PWA service workers do not work from `file://`.

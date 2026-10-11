@@ -11,7 +11,7 @@
     });
     const data = await response.json().catch(() => ({}));
     if (!response.ok) {
-      if (response.status === 401) sessionStorage.removeItem(TOKEN_KEY);
+      // Keep the token for diagnosis; the user can explicitly disconnect or replace it.
       throw new Error(data.error || (response.status === 401 ? 'Token incorrecte o sessió caducada.' : 'Error en la connexió amb JARVIS.'));
     }
     return data;

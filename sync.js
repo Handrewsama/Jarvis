@@ -47,7 +47,7 @@
       const remote = await window.JarvisAPI.getTasks();
       const remoteTasks = (remote.tasks || []).map(t => ({
         id: String(t.id), title: t.title, description: t.description || '',
-        due: t.due_at || '', priority: t.priority || 'medium',
+        due: t.due_at || '', priority: t.priority || 'medium', repeat: t.repeat || 'none',
         done: t.status === 'completed', createdAt: t.created_at || new Date().toISOString()
       }));
       const local = localTasks();
