@@ -1,4 +1,4 @@
-# J.A.R.V.I.S. Personal Assistant — 0.2.0
+# J.A.R.V.I.S. Personal Assistant — 0.2.1
 
 Responsive installable PWA with a dark/cyan interface, Catalan/Spanish/English UI, task management, local activity, speech-command prototype, Cloudflare Pages Functions API and D1 sync.
 
@@ -26,3 +26,7 @@ Responsive installable PWA with a dark/cyan interface, Catalan/Spanish/English U
 
 ## Local testing
 Serve over HTTPS or localhost. PWA service workers do not work from `file://`.
+
+
+## 0.2.1
+La conversa de JARVIS mostra les instruccions i respostes en format de xat. El camp de text es neteja després de processar cada ordre. El reconeixement de tasques accepta expressions de recurrència diària, setmanal i mensual, així com dates relatives i numèriques.

@@ -1,15 +1,8 @@
-JARVIS 0.2.0 — CANVIS
+JARVIS 0.2.1 — CORRECCIONS DE CONVERSA I TASQUES
 
-- Tasques recurrents diàries, setmanals i mensuals.
-- Quan es completa una tasca recurrent amb data límit, es crea la següent ocurrència.
-- Notificacions de tasques vençudes/per avui mentre l'aplicació està oberta i visible i el navegador ha concedit permís.
-- Exportació de tasques en JSON i importació de còpies JSON.
-- Exportació de tasques pendents amb data com a calendari .ics.
-- Sincronització D1 ampliada per desar la recurrència.
-- Nova versió del service worker per invalidar la memòria cau antiga.
-
-LIMITACIONS
-- Gmail, Google Calendar i WhatsApp continuen sense connexió real.
-- Les notificacions no són un sistema push fiable en segon pla a iOS.
-- Cal executar migration-v020.sql una sola vegada a D1 abans de desplegar el nou backend.
-- La sincronització actual substitueix el conjunt de tasques del compte D1; no és multiusuari.
+- El camp d’entrada es buida després de processar la instrucció.
+- S’afegeix un historial de xat compacte amb missatges de l’usuari i respostes de JARVIS.
+- JARVIS respon per text i intenta llegir la resposta en veu alta quan el navegador ho permet.
+- L’historial es pot esborrar i conserva només els missatges recents.
+- El reconeixement d’instruccions ara extreu dates relatives i dates numèriques, repetició diària/setmanal/mensual i prioritats.
+- Actualització de la memòria cau de l’aplicació per carregar aquesta versió.
