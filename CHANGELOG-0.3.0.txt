@@ -1,0 +1,24 @@
+JARVIS 0.3.0 — paquet experimental integrat
+
+Memòria i context
+- Desa localment l'última tasca tractada per entendre algunes ordres de seguiment.
+- Manté l'historial del xat al dispositiu i permet esborrar-lo.
+
+Planificació
+- Resum del dia: pendents, vençudes, tasques d'avui i pròximes dates.
+- Consulta de tasques pendents i tasques completades.
+- Priorització verbal de tasques endarrerides al resum.
+
+Ordres de conversa
+- Crear tasques amb dates, dies de la setmana i recurrència.
+- Completar o eliminar una tasca per part del títol.
+- Canviar la data d'una tasca i fer referència a l'última tasca en algunes ordres.
+- Resposta escrita i parlada quan el navegador ho admet.
+
+Integracions
+- Endpoint /api/integrations/status informa si hi ha credencials de Google/Meta configurades.
+- No connecta comptes per si mateix. Gmail/Calendar requereixen OAuth real i callback; WhatsApp requereix configuració Meta, token i webhook. No s'envia ni es llegeix cap dada externa en aquesta versió.
+
+Actualització
+- No cal cap migració D1 nova. La migració v0.2.0 de la columna repeat continua sent necessària i ja s'ha executat.
+- Pujar tots els fitxers de l'arrel del ZIP al repositori, inclosa la nova carpeta functions/api/integrations/.

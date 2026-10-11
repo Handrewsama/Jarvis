@@ -30,3 +30,10 @@ Serve over HTTPS or localhost. PWA service workers do not work from `file://`.
 
 ## 0.2.1
 La conversa de JARVIS mostra les instruccions i respostes en format de xat. El camp de text es neteja després de processar cada ordre. El reconeixement de tasques accepta expressions de recurrència diària, setmanal i mensual, així com dates relatives i numèriques.
+
+
+## v0.3.0 — conversa i planificació experimental
+
+La conversa accepta ordres per consultar el resum del dia, llistar pendents/completades, completar o eliminar tasques i reprogramar tasques per dies de la setmana. Desa el context de l'última tasca al navegador. Consulta `README-0.3.0-TESTS.txt` abans de validar-ho.
+
+`GET /api/integrations/status` informa si s'han definit secrets de configuració per a Google i Meta. És només una comprovació de preparació: no autentica cap compte ni connecta serveis. Gmail/Google Calendar requereixen OAuth i callbacks reals; WhatsApp Business requereix configuració oficial de Meta i webhook.
