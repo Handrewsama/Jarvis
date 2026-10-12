@@ -7,7 +7,7 @@ export async function onRequestGet({ request, env }) {
   if (!isAuthorized(request, env)) return json({ ok: false, error: 'No autoritzat' }, 401);
   const result = await env.DB.prepare(
     `SELECT COALESCE(client_id, CAST(id AS TEXT)) AS id, title, description, due_at,
-            priority, repeat, status, created_at FROM tasks ORDER BY created_at DESC LIMIT 500`
+            priority, status, created_at FROM tasks ORDER BY created_at DESC LIMIT 500`
   ).all();
   return json({ ok: true, tasks: result.results });
 }
@@ -27,13 +27,12 @@ export async function onRequestPost({ request, env }) {
   const statements = [env.DB.prepare('DELETE FROM tasks')];
   for (const t of tasks) {
     statements.push(env.DB.prepare(
-      `INSERT INTO tasks (client_id, title, description, due_at, priority, repeat, status, created_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
+      `INSERT INTO tasks (client_id, title, description, due_at, priority, status, created_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?)`
     ).bind(
       t.id, t.title.trim(), typeof t.description === 'string' ? t.description.slice(0, 2000) : '',
       typeof t.due === 'string' && t.due ? t.due : null,
       ['high','medium','low'].includes(t.priority) ? t.priority : 'medium',
-      ['daily','weekly','monthly'].includes(t.repeat) ? t.repeat : 'none',
       t.done ? 'completed' : 'pending',
       typeof t.createdAt === 'string' ? t.createdAt : new Date().toISOString()
     ));
