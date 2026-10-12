@@ -1,11 +1,18 @@
-JARVIS 0.2.0 — INSTAL·LACIÓ
+JARVIS Cloud Sync — instruccions
 
-1. Desplega la carpeta al projecte Cloudflare Pages existent.
-2. Comprova el binding D1 DB -> jarvis-db.
-3. Comprova que JARVIS_API_TOKEN existeix com a Secret a Production.
-4. Si canvies el secret, torna a desplegar Production.
-5. Obre JARVIS > Configuració > Connectar i sincronitzar i introdueix el mateix token.
-6. Prova crear, completar i sincronitzar una tasca.
+Contingut:
+- index.html: afegeix els controls de connexió a Configuració i carrega sync.js.
+- api.js: client de l'API amb token només a sessionStorage.
+- sync.js: connecta i sincronitza l'emmagatzematge local de tasques.
+- functions/api/tasks.js: endpoint protegit que sincronitza tasques a D1.
+- migration.sql: afegeix client_id i un índex únic.
 
-Si ja havies aplicat la migració anterior, executa migration-v020.sql una sola vegada per afegir la columna repeat. No la tornis a executar després que hagi funcionat.
-Les integracions Gmail/Calendar/WhatsApp necessiten configuració OAuth/API real i no estan connectades en aquesta versió.
+IMPORTANT:
+1. Abans de pujar aquests fitxers, comprova que Cloudflare Pages té DB -> jarvis-db i el secret JARVIS_API_TOKEN.
+2. Executa migration.sql una sola vegada a D1. La columna priority ja s'ha afegit; si client_id ja existeix, no tornis a executar l'ALTER TABLE.
+3. Substitueix els fitxers index.html, api.js i functions/api/tasks.js del repositori i afegeix sync.js a l'arrel.
+4. No publiquis ni comparteixis el token. Introdueix-lo només a Configuració de JARVIS.
+5. El endpoint actual fa una sincronització completa de la taula tasks, adequada per a aquest prototip personal d'un sol usuari. No l'utilitzis per a diversos usuaris sense afegir aïllament per usuari.
+
+
+JARVIS 0.5.0: see README.md for Google OAuth, Gmail/Calendar read-only and WhatsApp webhook setup. Run migration-v050.sql once in D1. The WhatsApp webhook is receive-only; outgoing messaging is deliberately not enabled.

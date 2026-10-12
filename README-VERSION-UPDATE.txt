@@ -1,9 +1,8 @@
-JARVIS VERSION / CACHE UPDATE — 0.1.1 (BUILD 20261011-01)
-
-Upload/replace these files in the GitHub repository root:
-index.html, styles.css, app.js, api.js, sync.js, sw.js, manifest.webmanifest, functions/api/tasks.js
-Keep migration.sql if you already added/executed it. Do not execute the migration again.
-
-This build shows VERSION 0.1.1 · BUILD 20261011-01 in the footer, adds version query strings to CSS/JS/manifest, updates the service worker cache identifier, deletes older jarvis-* caches, and uses network-first for the HTML shell.
-
-After committing, wait for Cloudflare Pages deployment to show Success. Then open https://jarvis-3gp.pages.dev/?v=20261011-01. In iPhone Safari, if an old app is still installed on the Home Screen, close it fully and reopen it.
+JARVIS 0.4.0 — GEMINI EXPERIMENT
+- New Cloudflare Pages Function: functions/api/interpret.js
+- Configure GEMINI_API_KEY as a Cloudflare Pages secret.
+- Natural-language intent is returned as structured JSON.
+- Update/complete/delete actions require a matching existing task ID.
+- If Gemini is unavailable, modification commands do not fall back to task creation.
+- Chat history is stored locally in the browser.
+- No database migration is needed for this uploaded localStorage-based project.

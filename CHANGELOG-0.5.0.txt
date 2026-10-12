@@ -1,0 +1,7 @@
+JARVIS 0.5.0 - Integration foundation
+- Added Google OAuth server flow, encrypted refresh token storage, Gmail read-only and Calendar read-only endpoints.
+- Added WhatsApp webhook verification and inbound message persistence. No outgoing messages.
+- Added D1 migration for integration tokens and WhatsApp inbox.
+- Updated Integrations UI and setup docs.
+- External services remain disconnected until Cloudflare secrets, Google OAuth and Meta webhook are configured.
+- Security caveat: protect endpoints with Cloudflare Access or add user authentication before public deployment; WhatsApp signature validation still needs implementation.
