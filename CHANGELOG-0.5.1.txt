@@ -1,0 +1,5 @@
+JARVIS 0.5.1 - Google OAuth button diagnostics
+- Shows Google OAuth errors next to the Google connect button instead of only in the WhatsApp card.
+- Detects a missing browser-session API token before starting OAuth and explains how to restore it.
+- Adds cache-busting version to frontend script URLs.
+- No database migration required.
